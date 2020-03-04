@@ -14,6 +14,7 @@
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.6",
     "@babel/preset-react": "^7.8.3",
     "babel-eslint": "^10.1.0",
@@ -23,6 +24,7 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-loader": "^3.0.3",
+    "eslint-plugin-css-modules": "^2.11.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.3",
@@ -37,7 +39,9 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.13.0",
+    "react-default-props": "^1.0.2",
     "react-dom": "^16.13.0",
     "react-hot-loader": "^4.12.19"
   }
