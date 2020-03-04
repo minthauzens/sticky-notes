@@ -4,7 +4,4 @@ webpack
 sass
 babel
 eslint
-
-
-not yet
-    jest for tests
+jest
