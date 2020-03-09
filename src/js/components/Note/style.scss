@@ -1,0 +1,24 @@
+.yellow {
+  background-color: yellow;
+}
+
+.blue {
+  background-color: blue;
+  color: red;
+}
+
+.black {
+  background-color: black;
+  color: white;
+}
+
+.Note {
+  max-width: 18rem;
+  display: inline-block;
+  margin: 5px;
+  position: relative;
+}
+
+.Note textarea {
+  width: 100%;
+}
