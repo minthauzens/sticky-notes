@@ -36,6 +36,10 @@ const App = () => {
         const note = {
             id: noteId,
             color,
+            coords: {
+                top: '50xp',
+                left: '50px',
+            },
         };
         setNotes([...notes, note]);
         noteId += 1;
@@ -56,6 +60,16 @@ const App = () => {
         localStorage.removeItem(name);
     }
 
+    function setCoords(id, coords) {
+        setNotes(() => notes.map((note) => {
+            const result = note;
+            if (note.id === id) {
+                result.coords = coords;
+            }
+            return result;
+        }));
+    }
+
     return (
         <div className="App">
             <Menu
@@ -74,6 +88,8 @@ const App = () => {
                             onClick={setActiveNote}
                             deleteNote={deleteNote}
                             color={noteColor}
+                            setCoords={setCoords}
+                            coords={note.coords}
                         />
                     );
                 })}

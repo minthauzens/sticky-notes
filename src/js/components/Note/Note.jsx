@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowsAlt, faBan } from '@fortawesome/free-solid-svg-icons';
@@ -12,34 +13,28 @@ function Note(props) {
         color,
         onClick,
         deleteNote,
+        coords,
+        setCoords,
     } = props;
     const localStorageName = LOCAL_STORAGE_NOTE_BASE + id;
     const note = JSON.parse(localStorage.getItem(localStorageName)) || {
         title: '',
         content: '',
-        coords: {
-            left: '50px',
-            top: '50px',
-        },
     };
     const [title, setTitle] = useState(() => note.title);
     const [content, setContent] = useState(() => note.content);
-    const [position, setPosition] = useState(() => note.coords);
+    const [position, setPosition] = useState(() => coords);
 
     useEffect(() => {
         note.title = title;
         localStorage.setItem(localStorageName, JSON.stringify(note));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [title]);
     useEffect(() => {
         note.content = content;
         localStorage.setItem(localStorageName, JSON.stringify(note));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [content]);
     useEffect(() => {
-        note.coords = position;
-        localStorage.setItem(localStorageName, JSON.stringify(note));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        setCoords(id, position);
     }, [position]);
 
     useEffect(() => {
@@ -136,6 +131,11 @@ Note.propTypes = {
     color: PropTypes.string,
     onClick: PropTypes.func,
     deleteNote: PropTypes.func,
+    coords: PropTypes.exact({
+        top: PropTypes.string,
+        left: PropTypes.string,
+    }),
+    setCoords: PropTypes.func,
 };
 
 Note.defaultProps = {
@@ -143,6 +143,11 @@ Note.defaultProps = {
     color: 'yellow',
     onClick: null,
     deleteNote: null,
+    coords: {
+        top: '50px',
+        left: '50px',
+    },
+    setCoords: null,
 };
 
 export default Note;
