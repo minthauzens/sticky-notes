@@ -11,6 +11,7 @@ function Note(props) {
         id,
         color,
         onClick,
+        deleteNote,
     } = props;
     const localStorageName = LOCAL_STORAGE_NOTE_BASE + id;
     const note = JSON.parse(localStorage.getItem(localStorageName)) || {
@@ -70,7 +71,6 @@ function Note(props) {
         }, true);
     }, [id]);
 
-
     let bootstrapClass;
     switch (color) {
     case 'blue':
@@ -114,7 +114,10 @@ function Note(props) {
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </h5>
-                <FontAwesomeIcon icon={faBan} />
+                <FontAwesomeIcon
+                    icon={faBan}
+                    onClick={() => { deleteNote(id); }}
+                />
             </div>
             <div className="note-content">
                 <textarea
@@ -132,12 +135,14 @@ Note.propTypes = {
     id: PropTypes.number,
     color: PropTypes.string,
     onClick: PropTypes.func,
+    deleteNote: PropTypes.func,
 };
 
 Note.defaultProps = {
     id: 0,
     color: 'yellow',
     onClick: null,
+    deleteNote: null,
 };
 
 export default Note;

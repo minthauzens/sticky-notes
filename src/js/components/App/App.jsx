@@ -50,6 +50,12 @@ const App = () => {
         setNotes([]);
     }
 
+    function deleteNote(id) {
+        setNotes(() => notes.filter((note) => note.id !== id));
+        const name = LOCAL_STORAGE_NOTE_BASE + id;
+        localStorage.removeItem(name);
+    }
+
     return (
         <div className="App">
             <Menu
@@ -66,6 +72,7 @@ const App = () => {
                             key={note.id}
                             id={note.id}
                             onClick={setActiveNote}
+                            deleteNote={deleteNote}
                             color={noteColor}
                         />
                     );
