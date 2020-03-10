@@ -14,11 +14,36 @@
 
 .Note {
   max-width: 18rem;
-  display: inline-block;
+  display: inline-flex;
   margin: 5px;
-  position: relative;
-}
+  position: absolute;
+  padding: 10px;
+  border-radius: 10px 30px;
 
-.Note textarea {
-  width: 100%;
+  textarea {
+    width: 100%;
+    min-height: 6rem;
+    overflow: auto;
+    border: none;
+  }
+
+  .faMove{
+    cursor: move;
+  }
+
+  h5 {
+    height: 1rem;
+    display: contents;
+
+    input {
+      width: calc(100% - 2em - 2px);
+      margin: 0 5px;
+      text-align: center;
+      border: none;
+    }
+  }
+
+  .note-header {
+    margin-bottom: 10px;
+  }
 }

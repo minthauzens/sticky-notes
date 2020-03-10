@@ -39,6 +39,10 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-regular-svg-icons": "^5.12.1",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.9",
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.1",
@@ -46,7 +50,6 @@
     "react": "^16.13.0",
     "react-default-props": "^1.0.2",
     "react-dom": "^16.13.0",
-    "react-fontawesome": "^1.7.1",
     "react-hot-loader": "^4.12.19"
   }
 }

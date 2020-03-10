@@ -1,0 +1,23 @@
+.Menu {
+  div .nav-link {
+    display: contents;
+  }
+
+  li {
+    min-width: 30px;
+    margin: 0 10px;
+  }
+
+  .black {
+    background: black;
+    color:white;
+  }
+  .blue {
+    background: blue;
+    color: white;
+  }
+  .yellow{
+    background: yellow;
+    color: black;
+  }
+}

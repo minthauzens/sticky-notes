@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faPaintBrush,
+    faPlusSquare,
+    faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
+import { faStickyNote as faStickyNoteRegular } from '@fortawesome/free-regular-svg-icons';
+import './style.scss';
 
 const Menu = ({
     onAddNote,
@@ -15,7 +23,7 @@ const Menu = ({
     }, [color]);
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="Menu navbar navbar-expand-lg navbar-light bg-light">
             <div>LOGO</div>
             <div className="navbar-brand">Stickies app</div>
             <button
@@ -32,7 +40,8 @@ const Menu = ({
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <div className="nav-link">
+                        <FontAwesomeIcon icon={faStickyNoteRegular} mask={['far']} className="fa-fw" />
+                        <div className="nav-link" style={{ marginRight: '5px' }}>
                             {noteCount}
                         </div>
                     </li>
@@ -44,6 +53,7 @@ const Menu = ({
                                 onAddNote();
                             }}
                         >
+                            <FontAwesomeIcon icon={faPlusSquare} className="fa-fw" />
                             addNote
                         </button>
                     </li>
@@ -55,6 +65,7 @@ const Menu = ({
                                 onDeleteAllNotes();
                             }}
                         >
+                            <FontAwesomeIcon icon={faTrashAlt} className="fa-fw" />
                             Delete All notes
                         </button>
                     </li>
@@ -67,26 +78,27 @@ const Menu = ({
                             aria-haspopup="true"
                             aria-expanded="false"
                         >
+                            <FontAwesomeIcon icon={faPaintBrush} />
                             Color
                         </button>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <button
                                 type="button"
-                                className="dropdown-item"
+                                className="dropdown-item black"
                                 onClick={() => setColor('black')}
                             >
                                 Black
                             </button>
                             <button
                                 type="button"
-                                className="dropdown-item"
+                                className="dropdown-item blue"
                                 onClick={() => setColor('blue')}
                             >
                                 Blue
                             </button>
                             <button
                                 type="button"
-                                className="dropdown-item"
+                                className="dropdown-item yellow"
                                 onClick={() => setColor('yellow')}
                             >
                                 Yellow

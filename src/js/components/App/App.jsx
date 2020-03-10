@@ -44,8 +44,8 @@ const App = () => {
     function deleteAllNotes() {
         localStorage.removeItem('stickyNotesApp-notes');
         notes.forEach((note) => {
-            const name = LOCAL_STORAGE_NOTE_BASE + note;
-            return localStorage.removeItem(name);
+            const name = LOCAL_STORAGE_NOTE_BASE + note.id;
+            localStorage.removeItem(name);
         });
         setNotes([]);
     }
