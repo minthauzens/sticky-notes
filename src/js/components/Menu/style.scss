@@ -1,6 +1,9 @@
 .Menu {
+  font-size: 18px;
+
   div .nav-link {
     display: contents;
+
   }
 
   li {
@@ -8,16 +11,13 @@
     margin: 0 10px;
   }
 
-  .black {
-    background: black;
-    color:white;
+  .dropdown-menu {
+    padding: 0;
+    border: none;
   }
-  .blue {
-    background: blue;
-    color: white;
-  }
-  .yellow{
-    background: yellow;
-    color: black;
+
+  .dropdown-item {
+    padding: 10px 30px;
+    font-size: 18px;
   }
 }

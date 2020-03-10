@@ -41,7 +41,7 @@ const Menu = ({
                 <ul className="navbar-nav">
                     <li className="nav-item">
                         <FontAwesomeIcon icon={faStickyNoteRegular} mask={['far']} className="fa-fw" />
-                        <div className="nav-link" style={{ marginRight: '5px' }}>
+                        <div className="nav-link active" style={{ marginRight: '5px' }}>
                             {noteCount}
                         </div>
                     </li>
@@ -84,13 +84,6 @@ const Menu = ({
                         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <button
                                 type="button"
-                                className="dropdown-item black"
-                                onClick={() => setColor('black')}
-                            >
-                                Black
-                            </button>
-                            <button
-                                type="button"
                                 className="dropdown-item blue"
                                 onClick={() => setColor('blue')}
                             >
@@ -102,6 +95,13 @@ const Menu = ({
                                 onClick={() => setColor('yellow')}
                             >
                                 Yellow
+                            </button>
+                            <button
+                                type="button"
+                                className="dropdown-item black"
+                                onClick={() => setColor('black')}
+                            >
+                                Black
                             </button>
                         </div>
                     </li>

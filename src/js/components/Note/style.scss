@@ -1,33 +1,21 @@
-.yellow {
-  background-color: yellow;
-}
-
-.blue {
-  background-color: blue;
-  color: red;
-}
-
-.black {
-  background-color: black;
-  color: white;
-}
-
 .Note {
   max-width: 18rem;
   display: inline-flex;
   margin: 5px;
   position: absolute;
-  padding: 10px;
+  //padding: 10px;
+  border: none;
   border-radius: 10px 30px;
 
   textarea {
     width: 100%;
-    min-height: 6rem;
-    overflow: auto;
     border: none;
+    overflow: hidden;
+    background: inherit;
+    min-height: 80px;
   }
 
-  .faMove{
+  .faMove {
     cursor: move;
   }
 
@@ -40,10 +28,18 @@
       margin: 0 5px;
       text-align: center;
       border: none;
+      background: inherit;
     }
   }
 
-  .note-header {
-    margin-bottom: 10px;
+  .card-header {
+    padding-bottom: 10px;
+    border-radius: 10px 30px 0 0;
+  }
+
+  .note-content {
+    padding: 10px 10px 0 10px;
+    margin-bottom: 30px;
+    border-radius: 0;
   }
 }

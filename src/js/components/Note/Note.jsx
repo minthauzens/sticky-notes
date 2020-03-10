@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowsAlt, faBan } from '@fortawesome/free-solid-svg-icons';
+import TextareaAutosize from 'react-autosize-textarea';
 import './style.scss';
 import PropTypes from 'prop-types';
 
@@ -66,23 +67,22 @@ function Note(props) {
         }, true);
     }, [id]);
 
-    let bootstrapClass;
-    switch (color) {
-    case 'blue':
-        bootstrapClass = 'bg-primary';
-        break;
-    case 'yellow':
-        bootstrapClass = 'bg-warning';
-        break;
-    case 'black':
-        bootstrapClass = 'bg-dark';
-        break;
-    default:
-        bootstrapClass = 'bg-warning';
+    function autosize() {
+        const el = this;
+        setTimeout(() => {
+            el.style.cssText = 'height:auto; padding:0';
+            // for box-sizing other than "content-box" use:
+            // el.style.cssText = '-moz-box-sizing:content-box';
+            el.style.cssText = `height:${el.scrollHeight}px`;
+        }, 0);
     }
-    bootstrapClass += ' text-white';
 
-    const noteClass = `Note ${bootstrapClass} card mb-3`;
+    useEffect(() => {
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('keydown', autosize);
+    }, []);
+
+    const noteClass = `Note ${color} card mb-3`;
 
     return (
         <div
@@ -94,15 +94,15 @@ function Note(props) {
             draggable="true"
             id={id}
         >
-            <div className="note-header">
+            <div className="card-header">
                 <FontAwesomeIcon
-                    icon={faArrowsAlt}
-                    className="faMove"
-                    id={`anchor${id}`}
+                    icon={faBan}
+                    onClick={() => {
+                        deleteNote(id);
+                    }}
                 />
                 <h5>
                     <input
-                        className={bootstrapClass}
                         type="text"
                         value={title}
                         placeholder="Title"
@@ -110,13 +110,13 @@ function Note(props) {
                     />
                 </h5>
                 <FontAwesomeIcon
-                    icon={faBan}
-                    onClick={() => { deleteNote(id); }}
+                    icon={faArrowsAlt}
+                    className="faMove"
+                    id={`anchor${id}`}
                 />
             </div>
             <div className="note-content">
-                <textarea
-                    className={bootstrapClass}
+                <TextareaAutosize
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     placeholder="add your note"
