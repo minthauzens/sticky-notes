@@ -1,7 +1,3 @@
-# BASE REACT PROJECT
+# STICKY NOTES
 
-webpack
-sass
-babel
-eslint
-jest
+broswer based app with local storage as persistance emulation sticku notes.
