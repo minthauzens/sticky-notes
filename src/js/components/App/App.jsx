@@ -5,7 +5,11 @@ import Menu from '../Menu/Menu';
 import Note, { LOCAL_STORAGE_NOTE_BASE } from '../Note/Note';
 
 const App = () => {
-    const LOCAL_STORAGE_KEY = 'stickyNotesApp-notes';
+    const LOCAL_STORAGE_KEY = 'stickyNotesApp';
+    const STARTING_COORDS = {
+        x: 50,
+        y: 65,
+    };
     const [notes, setNotes] = useState(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || []);
     const [activeNote, setActiveNote] = useState(null);
     const [color, setColor] = useState('yellow');
@@ -26,30 +30,32 @@ const App = () => {
     }, [color]);
 
     function setValidNoteId() {
-        // eslint-disable-next-line no-constant-condition
-        while (true) {
-            if (!notes.includes(noteId)) {
-                return noteId;
-            }
+        const matchedNotes = notes.filter((i) => i.id === noteId).length;
+        if (matchedNotes !== 0) {
             noteId += 1;
+            setValidNoteId();
         }
     }
 
     function addNote() {
         setValidNoteId();
+        const position = {
+            x: STARTING_COORDS.x + notes.length * 35,
+            y: STARTING_COORDS.y + notes.length * 35,
+        };
         const note = {
             id: noteId,
             color,
             coords: {
-                top: '50xp',
-                left: '50px',
+                left: `${position.x}px`,
+                top: `${position.y}px`,
             },
         };
         setNotes([...notes, note]);
         noteId += 1;
     }
 
-    function deleteAllNotes() {
+    function deleteAll() {
         localStorage.removeItem(LOCAL_STORAGE_KEY);
         notes.forEach((note) => {
             const name = LOCAL_STORAGE_NOTE_BASE + note.id;
@@ -78,7 +84,7 @@ const App = () => {
         <div className="App">
             <Menu
                 onAddNote={addNote}
-                onDeleteAllNotes={deleteAllNotes}
+                onDeleteAll={deleteAll}
                 noteCount={notes.length}
                 onColorChange={setColor}
             />

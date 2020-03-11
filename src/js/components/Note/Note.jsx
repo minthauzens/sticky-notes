@@ -8,15 +8,14 @@ import PropTypes from 'prop-types';
 
 export const LOCAL_STORAGE_NOTE_BASE = 'stickyNotesApp-note-';
 
-function Note(props) {
-    const {
-        id,
-        color,
-        onClick,
-        deleteNote,
-        coords,
-        setCoords,
-    } = props;
+const Note = ({
+    id,
+    color,
+    onClick,
+    deleteNote,
+    coords,
+    setCoords,
+}) => {
     const localStorageName = LOCAL_STORAGE_NOTE_BASE + id;
     const note = JSON.parse(localStorage.getItem(localStorageName)) || {
         title: '',
@@ -25,15 +24,18 @@ function Note(props) {
     const [title, setTitle] = useState(() => note.title);
     const [content, setContent] = useState(() => note.content);
     const [position, setPosition] = useState(() => coords);
+    const noteClass = `Note ${color} card mb-3`;
 
     useEffect(() => {
         note.title = title;
         localStorage.setItem(localStorageName, JSON.stringify(note));
     }, [title]);
+
     useEffect(() => {
         note.content = content;
         localStorage.setItem(localStorageName, JSON.stringify(note));
     }, [content]);
+
     useEffect(() => {
         setCoords(id, position);
     }, [position]);
@@ -80,8 +82,6 @@ function Note(props) {
         textarea.addEventListener('keydown', autosize);
     }, []);
 
-    const noteClass = `Note ${color} card mb-3`;
-
     return (
         <div
             className={noteClass}
@@ -122,7 +122,7 @@ function Note(props) {
             </div>
         </div>
     );
-}
+};
 
 Note.propTypes = {
     id: PropTypes.number,
