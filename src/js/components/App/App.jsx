@@ -3,13 +3,17 @@ import React, { useEffect, useState } from 'react';
 import './style.scss';
 import Menu from '../Menu/Menu';
 import Note, { LOCAL_STORAGE_NOTE_BASE } from '../Note/Note';
-import useStateWithLocalStorage from '../../utils/reactHooks';
 
 const App = () => {
-    const [notes, setNotes] = useStateWithLocalStorage('stickyNotesApp-notes', []);
+    const LOCAL_STORAGE_KEY = 'stickyNotesApp-notes';
+    const [notes, setNotes] = useState(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || []);
     const [activeNote, setActiveNote] = useState(null);
     const [color, setColor] = useState('yellow');
     let noteId = notes.length;
+
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
+    }, [notes]);
 
     useEffect(() => {
         setNotes(() => notes.map((note) => {
@@ -46,7 +50,7 @@ const App = () => {
     }
 
     function deleteAllNotes() {
-        localStorage.removeItem('stickyNotesApp-notes');
+        localStorage.removeItem(LOCAL_STORAGE_KEY);
         notes.forEach((note) => {
             const name = LOCAL_STORAGE_NOTE_BASE + note.id;
             localStorage.removeItem(name);
