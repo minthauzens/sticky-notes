@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faPaintBrush,
-    faPlusSquare,
-    faTrashAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { faPaintBrush, faPlusSquare, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faStickyNote as faStickyNoteRegular } from '@fortawesome/free-regular-svg-icons';
 import './style.scss';
 
@@ -40,7 +36,11 @@ const Menu = ({
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <FontAwesomeIcon icon={faStickyNoteRegular} mask={['far']} className="fa-fw" />
+                        <FontAwesomeIcon
+                            icon={faStickyNoteRegular}
+                            mask={['far']}
+                            className="fa-fw"
+                        />
                         <div className="nav-link active" style={{ marginRight: '5px' }}>
                             {noteCount}
                         </div>

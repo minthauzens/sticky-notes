@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const useStateWithLocalStorage = (localStorageKey, defaultValue) => {
     // eslint-disable-next-line max-len
